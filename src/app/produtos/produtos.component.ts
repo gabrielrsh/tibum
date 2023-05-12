@@ -10,6 +10,7 @@ export class ProdutosComponent implements OnInit {
 
   constructor(private http:HttpClient) {
     http.post('https://tibum-cf721-default-rtdb.firebaseio.com/produtos.json',{"hello":"world"}).subscribe();
+    http.get('https://tibum-cf721-default-rtdb.firebaseio.com/produtos.json').subscribe(msg => console.log(msg));
   }
 
   ngOnInit() {
