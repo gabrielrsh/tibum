@@ -1,1 +1,20 @@
-<button (click)="add()">Nada</button>
+<ul>
+  <li *ngFor="let produto of produtos | async | keyvalue">
+    <img [src]="produto.value.imagem" height="200" width="200">
+    <h3>{{produto.value.nome}}</h3>
+    <p>R$ {{produto.value.preco}}</p>
+  </li>
+</ul>
+
+
+
+
+
+
+
+<!-- <select>
+  <option default>Selecione endereco</option>
+  <option *ngFor="let endereco of pessoa.endereco" [value]="endereco">
+    {{endereco}}
+  </option>
+</select> -->
