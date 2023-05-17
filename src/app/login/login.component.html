@@ -1,0 +1,6 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <label for="idEmail">E-mail: </label><input formControlName="inEmail" id="idEmail" type="text">
+  <label for="idSenha">Senha: </label><input formControlName="inSenha" id="idSenha" type="password">
+  <button type="submit">Login</button>
+  <a routerLink="/cadastro">Cadastre-se</a>
+</form>

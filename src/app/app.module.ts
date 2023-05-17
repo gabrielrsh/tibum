@@ -5,16 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProdutosModule } from './produtos/produtos.module';
+import { LoginModule } from './login/login.module';
+import { CadastroModule } from './cadastro/cadastro.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ProdutosModule
+    ProdutosModule,
+    LoginModule,
+    CadastroModule
   ],
   providers: [],
   bootstrap: [AppComponent]
