@@ -1,6 +1,12 @@
-<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-  <label for="idEmail">E-mail: </label><input formControlName="inEmail" id="idEmail" type="text">
-  <label for="idSenha">Senha: </label><input formControlName="inSenha" id="idSenha" type="password">
-  <button type="submit">Login</button>
-  <a routerLink="/cadastro">Cadastre-se</a>
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="m-3">
+  <div class="mb-3">
+    <label for="idEmail" class="form-label">E-mail: </label>
+    <input formControlName="inEmail" class="form-control" id="idEmail" type="text">
+  </div>
+  <div class="mb-3">
+    <label for="idSenha" class="form-label">Senha: </label>
+    <input formControlName="inSenha" id="idSenha" type="password" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary mb-3">Login</button>
+  <a routerLink="/cadastro" class="mx-3">Cadastre-se</a>
 </form>

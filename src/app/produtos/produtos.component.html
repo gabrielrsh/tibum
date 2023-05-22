@@ -1,15 +1,12 @@
-<ul>
-  <li *ngFor="let produto of produtos | async | keyvalue">
-    <img [src]="produto.value.imagem" height="200" width="200" alt="">
-    <h3>{{produto.value.nome}}</h3>
-    <p>R$ {{produto.value.preco}}</p>
-  </li>
-</ul>
-
-
-
-
-
+<div class="container">
+  <ul class="row">
+    <li *ngFor="let produto of produtos | async | keyvalue" class="col-sm-6 col-md-4 col-xl-3 list-group-item">
+      <img [src]="produto.value.imagem" height="200" width="200" alt="">
+      <h3>{{produto.value.nome}}</h3>
+      <p>R$ {{produto.value.preco}}</p>
+    </li>
+  </ul>
+</div>
 
 
 <!-- <select>
