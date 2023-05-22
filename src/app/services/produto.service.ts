@@ -4,14 +4,14 @@ import { Produto } from '../model/produto';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn:'root'
+  providedIn: 'root'
 })
 export class ProdutoService {
 
-constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  criar(produto:Produto){
-    this.http.post('https://tibum-cf721-default-rtdb.firebaseio.com/produtos.json',produto).subscribe();
+  criar(produto: Produto) {
+    this.http.post('https://tibum-cf721-default-rtdb.firebaseio.com/produtos.json', produto).subscribe();
   }
 
   lerTodos(): Observable<Produto[]> {

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ProdutoService } from './produto.service';
+import { ProdutoService } from '../services/produto.service';
 import { Observable, of } from 'rxjs';
 
 @Component({
@@ -16,6 +16,7 @@ export class ProdutosComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   cria(){

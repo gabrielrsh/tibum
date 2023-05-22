@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProdutosModule } from './produtos/produtos.module';
 import { LoginModule } from './login/login.module';
 import { CadastroModule } from './cadastro/cadastro.module';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { CadastroModule } from './cadastro/cadastro.module';
     HttpClientModule,
     ProdutosModule,
     LoginModule,
-    CadastroModule
+    CadastroModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
