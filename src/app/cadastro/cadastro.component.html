@@ -1,9 +1,24 @@
-<form ngNativeValidate [formGroup]="form" (ngSubmit)="onSubmit()">
-  <label for="idEmail">E-mail: </label><input minlength="2" required formControlName="inEmail" id="idEmail" type="email"/>
-  <label for="idSenha">Senha: </label><input minlength="2" required formControlName="inSenha" id="idSenha" type="password"/>
-  <label for="idConfirmarSenha">Confirmar Senha: </label><input minlength="2" required formControlName="inConfirmarSenha" id="idConfirmarSenha" type="password"/>
-  <label for="idTelefone">Telefone: </label><input minlength="2" required formControlName="inTelefone" id="idTelefone" type="text"/>
+<form ngNativeValidate [formGroup]="form" (ngSubmit)="onSubmit()" class="m-3">
+  <div class="mb-3">
+    <label for="idEmail" class="form-label">E-mail: </label>
+    <input minlength="2" required formControlName="inEmail" id="idEmail" type="email" class="form-control"/>
+  </div>
 
-  <button type="submit">Cadastrar</button>
-  <a routerLink="/login">Login</a>
+  <div class="mb-3">
+    <label for="idSenha" class="form-label">Senha: </label>
+    <input minlength="2" required formControlName="inSenha" id="idSenha" type="password" class="form-control"/>
+  </div>
+
+  <div class="mb-3">
+    <label for="idConfirmarSenha" class="form-label">Confirmar Senha: </label>
+    <input minlength="2" required formControlName="inConfirmarSenha" id="idConfirmarSenha" type="password" class="form-control"/>
+  </div>
+
+  <div class="mb-3">
+    <label for="idTelefone" class="form-label">Telefone: </label>
+    <input minlength="2" required formControlName="inTelefone" id="idTelefone" type="text" class="form-control"/>
+  </div>
+
+  <button type="submit" class="btn btn-primary mb-3">Cadastrar</button>
+  <a routerLink="/login" class="mx-3">Login</a>
 </form>

@@ -1,11 +1,16 @@
 <div class="container">
-  <ul class="row">
-    <li *ngFor="let produto of produtos | async | keyvalue" class="col-sm-6 col-md-4 col-xl-3 list-group-item">
-      <img [src]="produto.value.imagem" height="200" width="200" alt="">
-      <h3>{{produto.value.nome}}</h3>
-      <p>R$ {{produto.value.preco}}</p>
-    </li>
-  </ul>
+  <div class="row">
+    <div *ngFor="let produto of produtos | async | keyvalue" class="card col-sm-6 col-md-4 col-xl-3"><!--col-sm-6 col-md-4 col-xl-3 m-3-->
+      <img [src]="produto.value.imagem" height="200" width="200" alt="" id="cardimg">
+      <div class="referencia card-body">
+        <h3>{{produto.value.nome}}</h3>
+        <p>R$ {{produto.value.preco}}</p>
+        <div class="d-grid">
+          <button class="btn btn-primary btn-lg">Comprar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
