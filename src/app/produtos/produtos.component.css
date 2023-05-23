@@ -5,3 +5,8 @@
 .referencia{
     border: 1px solid red;
 }
+
+.flexend{
+    justify-content: flex-end;
+    flex-direction: column;
+}
