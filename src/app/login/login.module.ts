@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       },
     ]),
     ReactiveFormsModule,
-    FormsModule,
+    FormsModule
   ],
 
   declarations: [LoginComponent]

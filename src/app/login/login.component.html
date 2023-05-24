@@ -1,11 +1,11 @@
-<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="m-3">
+<form ngNativeValidate [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="m-3">
   <div class="mb-3">
     <label for="idEmail" class="form-label">E-mail: </label>
-    <input formControlName="inEmail" class="form-control" id="idEmail" type="text">
+    <input formControlName="inEmail" class="form-control" id="idEmail" type="email" required>
   </div>
   <div class="mb-3">
     <label for="idSenha" class="form-label">Senha: </label>
-    <input formControlName="inSenha" id="idSenha" type="password" class="form-control">
+    <input formControlName="inSenha" id="idSenha" type="password" class="form-control" required>
   </div>
   <button type="submit" class="btn btn-primary mb-3">Login</button>
   <a routerLink="/cadastro" class="mx-3">Cadastre-se</a>
