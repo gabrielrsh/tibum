@@ -9,7 +9,7 @@ export class AutenticacaoService {
 
   constructor(private auth: AngularFireAuth) { }
 
-  signIn(params: SignIn): Observable<any> {
+  signIn(params: DadosUsuario): Observable<any> {
     return from(this.auth.signInWithEmailAndPassword(
       params.email, params.password
     )).pipe(
@@ -18,9 +18,25 @@ export class AutenticacaoService {
       )
     );
   }
+
+  async registrar(params:DadosUsuario): Promise<string> {
+    try {
+      const user = await this.auth.createUserWithEmailAndPassword(params.email,params.password);
+      return user.user!.uid;
+    }
+    catch(error){
+      return error+"";
+    }
+
+  }
+
+  getCredetial(){
+    this.auth.currentUser.then(user=>console.log(user));
+  }
+
 }
 
-type SignIn = {
+type DadosUsuario = {
   email: string;
   password: string;
 }

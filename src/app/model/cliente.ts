@@ -1,14 +1,15 @@
 export class Cliente {
+  uid:string;
   email:string;
   senha:string;
   telefone:string;
   endereco: string[]=[];
 
-  constructor(email:string,senha:string,telefone:string){
+  constructor(uid:string,email:string,senha:string,telefone:string){
+    this.uid = uid;
     this.email = email;
     this.senha = senha;
     this.telefone = telefone;
-
   }
 
   addEndereco(endereco:string){
