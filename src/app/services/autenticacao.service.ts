@@ -7,7 +7,20 @@ import { Observable, catchError, from, throwError } from 'rxjs';
 })
 export class AutenticacaoService {
 
-  constructor(private auth: AngularFireAuth) { }
+  logado:boolean=false;
+  user:any;
+
+  constructor(private auth: AngularFireAuth) {
+    auth.onAuthStateChanged((user)=> {
+      if(user){
+        this.logado = true;
+        this.user = user;
+      }
+      else{
+        this.logado = false;
+      }
+    })
+  }
 
   signIn(params: DadosUsuario): Observable<any> {
     return from(this.auth.signInWithEmailAndPassword(
@@ -27,11 +40,33 @@ export class AutenticacaoService {
     catch(error){
       return error+"";
     }
-
   }
 
-  getCredetial(){
-    this.auth.currentUser.then(user=>console.log(user));
+  onAuthChange(email:string|null,logado:boolean) {
+    return this.auth.onAuthStateChanged((user)=> {
+      if(user){
+        console.log(user);
+        email = user.email;
+        logado = true;
+        return user;
+      }
+      else{
+        logado=false;
+        return user;
+      }
+    });
+  }
+
+  sair() {
+    this.auth.signOut();
+  }
+
+  getLogado(){
+    return this.logado;
+  }
+
+  getUser(){
+    return this.user;
   }
 
 }

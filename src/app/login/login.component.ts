@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AutenticacaoService } from '../services/autenticacao.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder:FormBuilder,
-    private autenticacaoService:AutenticacaoService
+    private autenticacaoService:AutenticacaoService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -24,7 +26,7 @@ export class LoginComponent implements OnInit {
       email: this.checkoutForm.value.inEmail!,
       password: this.checkoutForm.value.inSenha!
     }).subscribe({
-      next: () => alert("LOGADO"),
+      next: () => {this.router.navigate(['/produtos'])},
       error: error => {
         alert(error.message)
       }
