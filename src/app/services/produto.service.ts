@@ -18,4 +18,8 @@ export class ProdutoService {
     return this.http.get<Produto[]>('https://tibum-cf721-default-rtdb.firebaseio.com/produtos.json');
   }
 
+  lerPorId(id:string): Observable<Produto> {
+    return this.http.get<Produto>(`https://tibum-cf721-default-rtdb.firebaseio.com/produtos/${id}.json`);
+  }
+
 }

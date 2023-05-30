@@ -10,6 +10,7 @@ import { CadastroModule } from './cadastro/cadastro.module';
 import { SharedModule } from './shared/shared.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { DetalhesProdutoModule } from './detalhesProduto/detalhesProduto.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     ProdutosModule,
     LoginModule,
     CadastroModule,
+    DetalhesProdutoModule,
     SharedModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyCQdtspyxoIPSJK0j9RwIIrFDoEDDe1inM",
