@@ -12,12 +12,9 @@ import { Produto } from '../model/produto';
 export class DetalhesProdutoComponent implements OnInit {
 
   produtoObs:Observable<Produto>|undefined;
-  produto:Produto|undefined;
 
   constructor(private route: ActivatedRoute, private produtoService: ProdutoService) {
     this.route.params.subscribe(params=> this.produtoObs = this.produtoService.lerPorId(params['id']));
-
-    this.produtoObs?.subscribe(a=>this.produto=a);
   }
 
   ngOnInit() {

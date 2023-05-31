@@ -1,5 +1,16 @@
-<div *ngIf="produto">
-  <img [src]="produto.imagem" alt="" height="400" width="400">
-  <h2>{{produto.nome}}</h2>
-  <h3>{{produto.preco.toLocaleString('us-US', { style: 'currency', currency: 'BRL' })}}</h3>
-</div >
+<div *ngIf="produtoObs |async as produto">
+  <div class="row m-4 g-5">
+    <div class="col-md-8 text-center produto-border">
+      <div class="produto">
+        <img [src]="produto.imagem" alt="" height="400" width="400">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="p-3 h-100 produto-border text-white d-flex flex-column align-items-start">
+        <h2>{{produto.nome}}</h2>
+        <h3 class="w-100 bg-roxo border rounded p-1 mt-auto mx-auto text-center ">{{produto.preco.toLocaleString('us-US', { style: 'currency', currency: 'BRL' })}}</h3>
+        <button class="btn text-white placeholder-wave bg-blue w-100 mt-auto fw-bold fs-5">Comprar</button>
+      </div>
+    </div>
+  </div>
+</div>

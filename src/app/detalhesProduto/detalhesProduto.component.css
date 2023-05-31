@@ -1,0 +1,22 @@
+.produto {
+  background-color: rgb(244, 236, 236);
+}
+
+.produto-border {
+  background: linear-gradient(to bottom, #8C3FDA, #27DCF6);
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.bg-roxo {
+  background-color: #8C3FDA;
+}
+
+.bg-blue {
+  border: 1px solid white;
+  background-color: #8C3FDA;
+}
+
+.btn:hover {
+  background-color: #27DCF6;
+}

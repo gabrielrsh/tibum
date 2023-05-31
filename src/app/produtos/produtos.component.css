@@ -7,6 +7,10 @@
 }
 
 .flexend{
-    justify-content: flex-end;
-    flex-direction: column;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.btn-blue {
+  background-color: #8C3FDA;
 }

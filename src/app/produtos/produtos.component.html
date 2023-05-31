@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container my-5">
   <div class="row">
     <div *ngFor="let produto of produtos | async | keyvalue" class="card col-sm-6 col-md-4 col-xl-3"><!--col-sm-6 col-md-4 col-xl-3 m-3-->
       <img [src]="produto.value.imagem" height="200" width="200" alt="" id="cardimg">
@@ -6,7 +6,7 @@
         <h3>{{produto.value.nome}}</h3>
         <p class="fs-4">{{produto.value.preco.toLocaleString('us-US', { style: 'currency', currency: 'BRL' })}}</p>
         <div class="d-grid">
-          <button class="btn btn-primary btn-lg" [routerLink]="['/produto',produto.key]">Comprar</button>
+          <button class="btn btn-blue btn-lg text-white fw-bold" [routerLink]="['/produto',produto.key]">Detalhes</button>
         </div>
       </div>
     </div>
