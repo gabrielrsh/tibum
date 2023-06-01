@@ -9,7 +9,7 @@
       <div class="p-3 h-100 produto-border text-white d-flex flex-column align-items-start">
         <h2>{{produto.nome}}</h2>
         <h3 class="w-100 bg-roxo border rounded p-1 mt-auto mx-auto text-center ">{{produto.preco.toLocaleString('us-US', { style: 'currency', currency: 'BRL' })}}</h3>
-        <button class="btn text-white placeholder-wave bg-blue w-100 mt-auto fw-bold fs-5">Comprar</button>
+        <button (click)="actComprar()" [routerLink]="['../../carrinho']" [state]="produto" class="btn text-white placeholder-wave bg-blue w-100 mt-auto fw-bold fs-5">Comprar</button>
       </div>
     </div>
   </div>

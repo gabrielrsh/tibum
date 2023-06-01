@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProdutoService } from '../services/produto.service';
 import { Observable } from 'rxjs';
 import { Produto } from '../model/produto';
+import { ProdutoCarrinho } from '../model/produtoCarrinho';
 
 @Component({
   selector: 'app-detalhesProduto',
@@ -20,4 +21,7 @@ export class DetalhesProdutoComponent implements OnInit {
   ngOnInit() {
   }
 
+  actComprar(){
+    
+  }
 }

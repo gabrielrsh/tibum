@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { DetalhesProdutoModule } from './detalhesProduto/detalhesProduto.module';
+import { CarrinhoModule } from './carrinho/carrinho.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DetalhesProdutoModule } from './detalhesProduto/detalhesProduto.module'
     CadastroModule,
     DetalhesProdutoModule,
     SharedModule,
+    CarrinhoModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyCQdtspyxoIPSJK0j9RwIIrFDoEDDe1inM",
       authDomain: "tibum-cf721.firebaseapp.com",
