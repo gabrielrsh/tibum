@@ -10,6 +10,9 @@
             <a class="nav-link fs-5 fw-bold text-white" routerLink="/produtos">Início</a>
           </li>
           <li class="nav-item">
+            <a *ngIf="autenticacaoService.getLogado()" class="nav-link fs-5 fw-bold text-white" routerLink="/carrinho">Carrinho</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link fs-5 fw-bold text-white" *ngIf="autenticacaoService.getLogado()">{{autenticacaoService.getUser().email}}</a>
             <a *ngIf="!autenticacaoService.getLogado()" class="nav-link fs-5 fw-bold text-white" routerLink="/login">Login</a>
           </li>

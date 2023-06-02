@@ -1,1 +1,23 @@
-<p>carrinho works!</p>
+<div class="m-4">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="" *ngFor="let produto of produtos">
+                <div class="m-2 d-flex align-items-center flex-row border rounded">
+                    <img [src]="produto.imagem" height="100" width="100" alt="">
+                    <h5 class="p-4 flex-fill">{{produto.nome}}</h5>
+                    <button class="btn btn-outline-secondary" type="button" (click)="decrementarItem(produto)">-</button>
+                    <input type="text" [value]="produto.quantidade" class="form-control input-number" placeholder="Qtd">
+                    <button class="btn btn-outline-secondary" type="button" (click)="incrementarItem(produto)">+</button>
+                    <p class="ms-4 fs-4">{{produto.preco.toLocaleString('us-US', { style: 'currency', currency: 'BRL' })}}</p>
+                    <button class="mx-4 btn btn-danger" (click)="excluirItem(produto)">Excluir</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-primary w-100" (click)="limparCarrinho()">Limpar carrinho</button>
+            <button class="btn btn-primary w-100" routerLink="/produtos">Continuar comprando</button>
+            <p class="fs-4">{{total.toLocaleString('us-US', { style: 'currency', currency: 'BRL' })}}</p>
+        </div>
+    </div>
+</div>
+

@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CarrinhoComponent implements OnInit {
   produtos: ProdutoCarrinho[] = [];
   ls = localStorage;
+  total = 0;
   
   constructor(private router: Router) {
     let produtoSelecionado = this.router.getCurrentNavigation()?.extras.state
@@ -19,8 +20,9 @@ export class CarrinhoComponent implements OnInit {
       this.adicionar(produtoCarrinho);
       this.ls.setItem('produtos', JSON.stringify(this.produtos));
       console.log(this.produtos);
+      this.calcularTotal();
     } else {
-      //Se veio a partir do menu da navbar carrinho
+      this.produtos = JSON.parse(this.ls.getItem('produtos') || '[]');
     }
   }
 
@@ -33,5 +35,39 @@ export class CarrinhoComponent implements OnInit {
 
   limparCarrinho(){
     this.ls.clear();
+    this.produtos = [];
+    this.calcularTotal();
+  }
+
+  pesquisarItem(produto: ProdutoCarrinho): number{
+    return this.produtos.indexOf(produto);
+  }
+
+  excluirItem(produto: ProdutoCarrinho){
+    this.produtos.splice(this.pesquisarItem(produto), 1);
+    this.ls.setItem('produtos', JSON.stringify(this.produtos));
+    this.calcularTotal();
+  }
+
+  calcularTotal(){
+    let total = 0;
+    this.produtos.forEach(produto => {
+      total+=produto.preco * produto.quantidade;
+    });
+    this.total = total;
+  }
+
+  incrementarItem(produto: ProdutoCarrinho){
+    produto.quantidade++;
+    this.ls.setItem('produtos', JSON.stringify(this.produtos));
+    this.calcularTotal();
+  }
+
+  decrementarItem(produto: ProdutoCarrinho){
+    if(produto.quantidade > 1){
+      produto.quantidade--;
+      this.ls.setItem('produtos', JSON.stringify(this.produtos));
+      this.calcularTotal();
+    }
   }
 }

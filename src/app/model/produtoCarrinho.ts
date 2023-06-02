@@ -7,4 +7,17 @@ export class ProdutoCarrinho extends Produto {
     super(nome, preco, imagem);
     this.quantidade = quantidade;
   }
+
+  getQuantidade(): number{
+    return this.quantidade;
+  }
+
+  public incrementarQuantidade():void{
+    this.quantidade++;
+  }
+
+  decrementarQuantidade():void{
+    if(this.quantidade > 1)
+      this.quantidade--;
+  }
 }
