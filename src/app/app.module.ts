@@ -12,10 +12,13 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { DetalhesProdutoModule } from './detalhesProduto/detalhesProduto.module';
 import { CarrinhoModule } from './carrinho/carrinho.module';
+import { FinalizarCompraComponent } from './finalizar-compra/finalizar-compra.component';
+import { FinalizarCompraModule } from './finalizar-compra/finalizar-compra.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    FinalizarCompraComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { CarrinhoModule } from './carrinho/carrinho.module';
     DetalhesProdutoModule,
     SharedModule,
     CarrinhoModule,
+    FinalizarCompraModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyCQdtspyxoIPSJK0j9RwIIrFDoEDDe1inM",
       authDomain: "tibum-cf721.firebaseapp.com",

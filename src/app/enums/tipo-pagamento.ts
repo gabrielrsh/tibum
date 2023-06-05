@@ -1,6 +1,6 @@
 export enum TipoPagamento {
-    "Cartão de débito",
-    "Cartão de crédito",
-    "Boleto",
-    "Pix"
+    DEBITO = "Cartão de débito",
+    CREDITO = "Cartão de crédito",
+    BOLETO = "Boleto",
+    PIX = "Pix"
 }
