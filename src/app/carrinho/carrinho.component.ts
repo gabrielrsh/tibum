@@ -12,6 +12,7 @@ export class CarrinhoComponent implements OnInit {
   produtos: ProdutoCarrinho[] = [];
   ls = localStorage;
   total = 0;
+  disableAvancar=true;
 
   constructor(private router: Router, private autenticacaoService:AutenticacaoService) {
     let produtoSelecionado = this.router.getCurrentNavigation()?.extras.state
@@ -22,6 +23,7 @@ export class CarrinhoComponent implements OnInit {
       this.ls.setItem(this.autenticacaoService.getUser().uid, JSON.stringify(this.produtos));
 
       this.calcularTotal();
+      this.disableAvancar = false;
     } else {
       console.log("problema");
       this.produtos = JSON.parse(this.ls.getItem(this.autenticacaoService.getUser().uid) || '[]');
@@ -39,6 +41,7 @@ export class CarrinhoComponent implements OnInit {
     this.ls.clear();
     this.produtos = [];
     this.calcularTotal();
+    this.disableAvancar = true;
   }
 
   pesquisarItem(produto: ProdutoCarrinho): number{
@@ -49,6 +52,8 @@ export class CarrinhoComponent implements OnInit {
     this.produtos.splice(this.pesquisarItem(produto), 1);
     this.ls.setItem(this.autenticacaoService.getUser().uid, JSON.stringify(this.produtos));
     this.calcularTotal();
+    if(!this.produtos.length)
+      this.disableAvancar = true;
   }
 
   calcularTotal(){
