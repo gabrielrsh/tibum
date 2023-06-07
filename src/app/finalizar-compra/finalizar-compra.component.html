@@ -9,8 +9,8 @@
         <button (click)="addEndereco()" class="btn btn-primary ms-2">Adicionar</button>
     </div>
 
-    <select class="form-select-lg w-100 m-2" title="asd">
-        <option *ngFor="let endereco of listaEnderecos" [value]="endereco">
+    <select class="form-select-lg w-100 m-2" title="enderecos">
+        <option *ngFor="let endereco of listaEnderecos | async" [value]="endereco">
         {{endereco}}
         </option>
     </select>
@@ -27,5 +27,5 @@
 </section>
 
 <section class="d-flex mx-auto justify-content-end col-6">
-    <button class="btn btn-lg btn-primary m-2">Finalizar Compra</button>
+    <button (click)="finalizarCompra()" class="btn btn-lg btn-primary m-2">Finalizar Compra</button>
 </section>

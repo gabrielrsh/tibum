@@ -3,6 +3,8 @@ import { TipoPagamento } from '../enums/tipo-pagamento';
 import { AutenticacaoService } from '../services/autenticacao.service';
 import { ClienteService } from '../services/cliente.service';
 import { Cliente } from '../model/cliente';
+import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,17 +14,15 @@ import { Cliente } from '../model/cliente';
 })
 export class FinalizarCompraComponent implements OnInit {
 
-  listaEnderecos: string[] = [];
+  listaEnderecos: Observable<string[]> = of();
   formaPagamento = Object.values(TipoPagamento);
   inEndereco:string='';
 
-  constructor(private clienteService: ClienteService, private autenticacaoService: AutenticacaoService) {
-    this.clienteService.lerPorId(this.autenticacaoService.user.uid).subscribe(
-      c => {
-        if(c.endereco)
-          this.listaEnderecos = c.endereco;
-      }
-    );
+  constructor(private clienteService: ClienteService,
+              private autenticacaoService: AutenticacaoService,
+              private router:Router)
+  {
+    this.atualizaListaEnderecos();
   }
 
   ngOnInit(): void {
@@ -40,6 +40,22 @@ export class FinalizarCompraComponent implements OnInit {
 
       this.limpaCampo();
     });
+    setTimeout(()=>this.atualizaListaEnderecos(),1000);
+  }
+
+  atualizaListaEnderecos() {
+    this.clienteService.lerPorId(this.autenticacaoService.user.uid).subscribe(
+      c => {
+        if(c.endereco)
+          this.listaEnderecos = of(c.endereco);
+      }
+    );
+  }
+
+  finalizarCompra() {
+    localStorage.clear();
+    alert("OBRIGADO PELA COMPRA!");
+    this.router.navigate(['/produtos']);
   }
 
   limpaCampo(){
