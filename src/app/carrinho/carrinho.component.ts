@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProdutoCarrinho } from '../model/produtoCarrinho';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AutenticacaoService } from '../services/autenticacao.service';
+import { Produto } from '../model/produto';
 
 @Component({
   selector: 'app-carrinho',
@@ -15,7 +16,9 @@ export class CarrinhoComponent implements OnInit {
   disableAvancar=true;
 
   constructor(private router: Router, private autenticacaoService:AutenticacaoService) {
-    let produtoSelecionado = this.router.getCurrentNavigation()?.extras.state
+    const state = this.router.getCurrentNavigation()?.extras.state as {produto: Produto};
+    let produtoSelecionado = state.produto;
+
     if(produtoSelecionado){
       this.produtos = JSON.parse(this.ls.getItem(this.autenticacaoService.getUser().uid) || '[]');
       let produtoCarrinho = new ProdutoCarrinho(produtoSelecionado['nome'], produtoSelecionado['preco'], produtoSelecionado['imagem'], 1);
@@ -25,7 +28,6 @@ export class CarrinhoComponent implements OnInit {
       this.calcularTotal();
       this.disableAvancar = false;
     } else {
-      console.log("problema");
       this.produtos = JSON.parse(this.ls.getItem(this.autenticacaoService.getUser().uid) || '[]');
     }
   }
