@@ -18,15 +18,13 @@ export class ClienteService {
     return this.http.get<Cliente[]>('https://tibum-cf721-default-rtdb.firebaseio.com/clientes.json');
   }
 
-  /* lerPorId(id:number): Observable<Cliente> {
-    return this.http.get<Cliente>('https://tibum-cf721-default-rtdb.firebaseio.com/clientes.json');
-  } */
+  lerPorId(id:number): Observable<Cliente> {
+    return this.http.get<Cliente>(`https://tibum-cf721-default-rtdb.firebaseio.com/clientes/${id}.json`);
+  }
 
   editar(id: string, cliente: Cliente){
-
   }
 
   excluir(id: string){
-
   }
 }
