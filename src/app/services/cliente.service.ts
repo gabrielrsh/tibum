@@ -11,12 +11,16 @@ export class ClienteService {
   constructor(private http: HttpClient) { }
 
   criar(cliente: Cliente) {
-    this.http.post('https://tibum-cf721-default-rtdb.firebaseio.com/clientes.json', cliente).subscribe();
+    this.http.put(`https://tibum-cf721-default-rtdb.firebaseio.com/clientes/${cliente.uid}.json`,cliente).subscribe();
   }
 
   lerTodos(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>('https://tibum-cf721-default-rtdb.firebaseio.com/clientes.json');
   }
+
+  /* lerPorId(id:number): Observable<Cliente> {
+    return this.http.get<Cliente>('https://tibum-cf721-default-rtdb.firebaseio.com/clientes.json');
+  } */
 
   editar(id: string, cliente: Cliente){
 
