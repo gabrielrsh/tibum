@@ -17,7 +17,9 @@ export class CarrinhoComponent implements OnInit {
 
   constructor(private router: Router, private autenticacaoService:AutenticacaoService) {
     const state = this.router.getCurrentNavigation()?.extras.state as {produto: Produto};
-    let produtoSelecionado = state.produto;
+    let produtoSelecionado;
+    if(state)
+      produtoSelecionado = state.produto;
 
     if(produtoSelecionado){
       this.produtos = JSON.parse(this.ls.getItem(this.autenticacaoService.getUser().uid) || '[]');
@@ -29,6 +31,8 @@ export class CarrinhoComponent implements OnInit {
       this.disableAvancar = false;
     } else {
       this.produtos = JSON.parse(this.ls.getItem(this.autenticacaoService.getUser().uid) || '[]');
+      if(this.produtos.length)
+        this.disableAvancar = false;
     }
   }
 
