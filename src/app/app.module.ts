@@ -14,6 +14,7 @@ import { DetalhesProdutoModule } from './detalhesProduto/detalhesProduto.module'
 import { CarrinhoModule } from './carrinho/carrinho.module';
 import { FinalizarCompraComponent } from './finalizar-compra/finalizar-compra.component';
 import { FinalizarCompraModule } from './finalizar-compra/finalizar-compra.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,9 @@ import { FinalizarCompraModule } from './finalizar-compra/finalizar-compra.modul
       messagingSenderId: "550523093894",
       appId: "1:550523093894:web:419cad5d5d4fb44ba56207"
     }),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

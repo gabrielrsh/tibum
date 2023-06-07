@@ -3,19 +3,19 @@
 
     <div class="d-flex m-2">
         <div class="form-floating w-100"><!-- Endereço -->
-            <input class="form-control" type="text" placeholder="Endereço"/>
+            <input [(ngModel)]="inEndereco" class="form-control" type="text" placeholder="Endereço"/>
             <label>Endereço</label>
         </div>
-        <button class="btn btn-primary ms-2">Adicionar</button>
+        <button (click)="addEndereco()" class="btn btn-primary ms-2">Adicionar</button>
     </div>
 
     <select class="form-select-lg w-100 m-2" title="asd">
-        <option *ngFor="let endereco of pessoa" [value]="endereco">
+        <option *ngFor="let endereco of listaEnderecos" [value]="endereco">
         {{endereco}}
         </option>
     </select>
 </section>
-  
+
 <section class="mx-auto col-6"><!-- Forma de Pgto-->
     <h3 class="m-2">Forma de Pagamento</h3>
 

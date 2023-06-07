@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { CarrinhoComponent } from '../carrinho/carrinho.component';
 import { FinalizarCompraComponent } from './finalizar-compra.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,7 +13,7 @@ import { FinalizarCompraComponent } from './finalizar-compra.component';
       {
           path: 'finalizarCompra', component: FinalizarCompraComponent,
       },
-    ])
+    ]),
   ]
 })
 export class FinalizarCompraModule { }
