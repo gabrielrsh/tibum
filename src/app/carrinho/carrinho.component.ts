@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoCarrinho } from '../model/produtoCarrinho';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AutenticacaoService } from '../services/autenticacao.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -11,18 +12,19 @@ export class CarrinhoComponent implements OnInit {
   produtos: ProdutoCarrinho[] = [];
   ls = localStorage;
   total = 0;
-  
-  constructor(private router: Router) {
+
+  constructor(private router: Router, private autenticacaoService:AutenticacaoService) {
     let produtoSelecionado = this.router.getCurrentNavigation()?.extras.state
     if(produtoSelecionado){
-      this.produtos = JSON.parse(this.ls.getItem('produtos') || '[]');
+      this.produtos = JSON.parse(this.ls.getItem(this.autenticacaoService.getUser().uid) || '[]');
       let produtoCarrinho = new ProdutoCarrinho(produtoSelecionado['nome'], produtoSelecionado['preco'], produtoSelecionado['imagem'], 1);
       this.adicionar(produtoCarrinho);
-      this.ls.setItem('produtos', JSON.stringify(this.produtos));
-      console.log(this.produtos);
+      this.ls.setItem(this.autenticacaoService.getUser().uid, JSON.stringify(this.produtos));
+
       this.calcularTotal();
     } else {
-      this.produtos = JSON.parse(this.ls.getItem('produtos') || '[]');
+      console.log("problema");
+      this.produtos = JSON.parse(this.ls.getItem(this.autenticacaoService.getUser().uid) || '[]');
     }
   }
 
@@ -45,7 +47,7 @@ export class CarrinhoComponent implements OnInit {
 
   excluirItem(produto: ProdutoCarrinho){
     this.produtos.splice(this.pesquisarItem(produto), 1);
-    this.ls.setItem('produtos', JSON.stringify(this.produtos));
+    this.ls.setItem(this.autenticacaoService.getUser().uid, JSON.stringify(this.produtos));
     this.calcularTotal();
   }
 
@@ -59,14 +61,14 @@ export class CarrinhoComponent implements OnInit {
 
   incrementarItem(produto: ProdutoCarrinho){
     produto.quantidade++;
-    this.ls.setItem('produtos', JSON.stringify(this.produtos));
+    this.ls.setItem(this.autenticacaoService.getUser().uid, JSON.stringify(this.produtos));
     this.calcularTotal();
   }
 
   decrementarItem(produto: ProdutoCarrinho){
     if(produto.quantidade > 1){
       produto.quantidade--;
-      this.ls.setItem('produtos', JSON.stringify(this.produtos));
+      this.ls.setItem(this.autenticacaoService.getUser().uid, JSON.stringify(this.produtos));
       this.calcularTotal();
     }
   }
