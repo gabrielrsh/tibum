@@ -1,10 +1,10 @@
-<div class="container my-5">
-  <div class="row">
-    <div *ngFor="let produto of produtos | async | keyvalue" class="card col-sm-6 col-md-4 col-xl-3"><!--col-sm-6 col-md-4 col-xl-3 m-3-->
-      <img [src]="produto.value.imagem" height="200" width="200" alt="" id="cardimg">
+<div class="my-5">
+  <div class="row g-3 justify-content-start ms-1">
+    <div *ngFor="let produto of produtos | async | keyvalue" class="card col-sm-6 col-md-4 col-xl-3 mx-2" style="width: 20rem;">
+      <img [src]="produto.value.imagem" class="align-self-center" height="200" width="200" alt="">
       <div  class="d-flex flexend card-body">
         <h3>{{produto.value.nome}}</h3>
-        <p class="fs-4">{{produto.value.preco.toLocaleString('us-US', { style: 'currency', currency: 'BRL' })}}</p>
+        <p class="fs-4 text-center">{{produto.value.preco.toLocaleString('us-US', { style: 'currency', currency: 'BRL' })}}</p>
         <div class="d-grid">
           <button class="btn btn-blue btn-lg text-white fw-bold" [routerLink]="['/produto',produto.key]">Detalhes</button>
         </div>
